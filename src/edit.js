@@ -101,7 +101,7 @@ const isJson = ( item ) => {
 				const player = block.querySelector( 'lottie-player' );
 				player.load( value );
 			}
-			setAttributes( { json: value } );
+			setAttributes({ json: value } );
 		}
 		else
 		{
