@@ -1,0 +1,8 @@
+{
+	"core": "./tools/wordpress",
+    "port": 1000,
+    "testsPort": 1001,
+	"plugins": [
+		"."
+	]
+}

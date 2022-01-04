@@ -1,0 +1,44 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"version": "1.0.0",
+	"name": "create-block/lottie",
+	"title": "Lottie",
+	"category": "widgets",
+	"description": "This is a Lottie animation custom block",
+	"keywords": [
+		"lottie",
+		"animation"
+	],
+	"textdomain": "lottie-block",
+	"supports": {
+		"customClassName": true,
+		"html": false,
+		"anchor": true
+	},
+	"attributes": {
+		"json": {
+			"type": "string",
+			"default": ""
+		},
+		"controls": {
+			"type": "boolean",
+			"default": false
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": true
+		},
+		"loop": {
+			"type": "boolean",
+			"default": true
+		},
+		"maxHeight": {
+			"type": "integer",
+			"default": "400"
+		}
+	},
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}

@@ -1,0 +1,54 @@
+{
+	"name": "xwp/lottie-blocks",
+	"type": "wordpress-plugin",
+	"description": "Lottie Blocks collection.",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"Plugins"
+	],
+	"homepage": "https://github.com/xwp/code-snippets#readme",
+	"support": {
+		"issues": "https://github.com/xwp/code-snippets/issues",
+		"source": "https://github.com/xwp/code-snippets"
+	},
+	"authors": [
+		{
+			"name": "Contributors",
+			"homepage": "https://github.com/xwp/code-snippets/graphs/contributors"
+		}
+	],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "7.4.2",
+			"ext-filter": "7.1"
+		}
+	},
+	"extra": {
+		"wordpress-install-dir": "tools/wordpress"
+	},
+	"require": {
+		"php": ">=7.2"
+	},
+	"require-dev": {
+		"automattic/vipwpcs": "^2.3",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"phpcompatibility/phpcompatibility-wp": "*",
+		"phpunit/phpunit": "^5.7",
+		"roots/wordpress": "^5.6",
+		"wp-cli/i18n-command": "^2.2",
+		"wp-cli/wp-cli-bundle": "^2.4",
+		"wp-phpunit/wp-phpunit": "^5.6",
+		"wptrt/wpthemereview": "^0.2.1"
+	},
+	"scripts": {
+		"lint": "phpcs --runtime-set testVersion 5.6- .",
+		"lint-fix": "phpcbf --runtime-set testVersion 5.6- .",
+		"make-pot": "wp i18n make-pot . ./languages/lottie-blocks.pot --exclude=tools,js/dist",
+		"test": "phpunit",
+		"wp": "wp"
+	}
+}
