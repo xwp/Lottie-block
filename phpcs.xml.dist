@@ -10,7 +10,7 @@
 
 	<!-- Target the lowest supported version of PHP by WP core for plugins hosted on WP.org. -->
 	<rule ref="PHPCompatibilityWP" />
-	<config name="testVersion" value="7.1-" /><!-- See the override in composer.json for the lint and lint-fix scripts. -->
+	<config name="testVersion" value="5.6-" /><!-- See the override in composer.json for the lint and lint-fix scripts. -->
 
 	<rule ref="WordPress-Core">
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />

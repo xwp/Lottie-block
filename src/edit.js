@@ -5,44 +5,38 @@
  */
 import { __ } from '@wordpress/i18n';
 
-
-import { useSelect, useDispatch } from '@wordpress/data';
+import { useDispatch } from '@wordpress/data';
 
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-
-import { G, Path, SVG, Rect } from '@wordpress/components';
-
-/**
+ *
  * Inspector Controls appear in the post settings sidebar when a block is being edited.
  * The controls appear in both HTML and visual editing modes, and thus should contain settings that affect the entire block.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#inspectorcontrols
  */
-import { InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 
 /**
  * Components used for adjusting Lottie settings
+ *
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/panel/#panelbody
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/toggle-control/
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/range-control/
  */
-import { TextControl, PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
+import {
+	G,
+	Path,
+	SVG,
+	TextControl,
+	PanelBody,
+	ToggleControl,
+	RangeControl,
+} from '@wordpress/components';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -53,26 +47,17 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 
-//Extensive check to make sure object is not of string type and not null.
-const isJson = ( item ) => {
-	item = typeof item !== "string"
-		? JSON.stringify(item)
-		: item;
-
-	try {
-		item = JSON.parse(item);
-	} catch (e) {
-		return false;
-	}
-
-	if (typeof item === "object" && item !== null) {
-		return true;
-	}
-
-	return false;
-}
-
- export default function Edit( props ) {
+/* Internal dependencies */
+import { isJson } from './isJson';
+/**
+ * The edit function describes the structure of your block in the context of the
+ * editor. This represents what the editor will render when the block is used.
+ *
+ * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
+ * @param {Object} props Block properties
+ * @return {WPElement} Element to render.
+ */
+export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
 	const { json, autoplay, controls, loop, maxHeight } = attributes;
 
@@ -88,24 +73,28 @@ const isJson = ( item ) => {
 	// Adds Lottie JSON animation, and plays it immediately in the editor view.
 	const onJsonAddedHandler = ( value ) => {
 		// Save src attribute value if the animation if the field contains valid json or is empty.
-		if(isJson(value) || value=='')
-		{
-			if(value=='')
-			{
-				createSuccessNotice(__("Animation is removed successfully","lottie-block"));
+		if ( isJson( value ) || value === '' ) {
+			if ( value === '' ) {
+				createSuccessNotice(
+					__( 'Animation is removed successfully', 'lottie-block' )
+				);
 			}
-			if(isJson(value))
-			{
-				createSuccessNotice(__("Animation is added successfully","lottie-block"));
+			if ( isJson( value ) ) {
+				createSuccessNotice(
+					__( 'Animation is added successfully', 'lottie-block' )
+				);
 				const block = document.querySelector( '#block-' + clientId );
 				const player = block.querySelector( 'lottie-player' );
 				player.load( value );
 			}
-			setAttributes({ json: value } );
-		}
-		else
-		{
-			createErrorNotice(__("JSON is not valid, please check if all JSON code is copied","lottie-block"))
+			setAttributes( { json: value } );
+		} else {
+			createErrorNotice(
+				__(
+					'JSON is not valid, please check if all JSON code is copied',
+					'lottie-block'
+				)
+			);
 		}
 	};
 
@@ -124,7 +113,7 @@ const isJson = ( item ) => {
 	}
 	lottieAttributes.style = {
 		height: `${ maxHeight }px`,
-		display: json.length === 0 ? 'none' : 'block'
+		display: json.length === 0 ? 'none' : 'block',
 	};
 
 	return (
@@ -172,7 +161,7 @@ const isJson = ( item ) => {
 					<TextControl
 						label={ __( 'JSON animation data', 'lottie-block' ) }
 						value={ json }
-						onChange={ (value) => onJsonAddedHandler(value) }
+						onChange={ ( value ) => onJsonAddedHandler( value ) }
 					/>
 					<ToggleControl
 						label={ __( 'Autoplay', 'lottie-block' ) }
@@ -213,4 +202,3 @@ const isJson = ( item ) => {
 		</div>
 	);
 }
-

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Block Can add block 1`] = `
+"<!-- wp:create-block/lottie -->
+<div class=\\"wp-block-create-block-lottie\\"><lottie-player background=\\"transparent\\" src=\\"\\" autoplay loop style=\\"height:400px\\" speed=\\"1\\"></lottie-player></div>
+<!-- /wp:create-block/lottie -->"
+`;

@@ -25,6 +25,10 @@
 		"platform": {
 			"php": "7.4.2",
 			"ext-filter": "7.1"
+		},
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"roots/wordpress-core-installer": true
 		}
 	},
 	"extra": {
@@ -35,7 +39,7 @@
 	},
 	"require-dev": {
 		"automattic/vipwpcs": "^2.3",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
 		"phpcompatibility/phpcompatibility-wp": "*",
 		"phpunit/phpunit": "^5.7",
 		"roots/wordpress": "^5.6",
@@ -45,8 +49,8 @@
 		"wptrt/wpthemereview": "^0.2.1"
 	},
 	"scripts": {
-		"lint": "phpcs --runtime-set testVersion 5.6- .",
-		"lint-fix": "phpcbf --runtime-set testVersion 5.6- .",
+		"lint": "phpcs .",
+		"lint-fix": "phpcbf .",
 		"make-pot": "wp i18n make-pot . ./languages/lottie-blocks.pot --exclude=tools,js/dist",
 		"test": "phpunit",
 		"wp": "wp"

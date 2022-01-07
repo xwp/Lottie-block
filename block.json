@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
 	"version": "1.0.0",
-	"name": "create-block/lottie",
+	"name": "xwp/lottie-blocks",
 	"title": "Lottie",
 	"category": "widgets",
 	"description": "This is a Lottie animation custom block",
@@ -38,7 +38,8 @@
 			"default": "400"
 		}
 	},
-	"editorScript": "file:./build/index.js",
-	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+	"editorScript": "file:./dist/editor.js",
+	"script": "file:./dist/script.js",
+	"editorStyle": "file:./dist/editor.css",
+	"style": "file:./dist/style.css"
 }

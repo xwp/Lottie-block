@@ -1,0 +1,9 @@
+{
+	"autoRename": false,
+	"autoRenameStrict": false,
+	"blacklist": {},
+	"clean": true,
+	"greedy": false,
+	"processUrls": false,
+	"stringMap": []
+}

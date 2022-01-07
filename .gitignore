@@ -2,6 +2,7 @@
 /node_modules/
 /vendor/
 /tools/
+/artifacts/
 .DS_Store
 
 # Supported local overrides.

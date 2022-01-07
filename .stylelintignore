@@ -1,7 +1,5 @@
 /vendor
 /tools
 /tests
-/css/dist
-/blocks/*/dist
-/js/dist
-/build
+/dist
+/node_modules
