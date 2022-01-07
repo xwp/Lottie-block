@@ -25,6 +25,7 @@
 		"wp-env": "wp-env",
 		"test-jest": "jest",
 		"prepare": "husky install",
+		"test": "npm run lint",
 		"test-e2e": "wp-scripts test-e2e",
 		"test-e2e:debug": "wp-scripts --inspect-brk test-e2e --puppeteer-devtools",
 		"test-e2e:watch": "npm run test-e2e -- --puppeteer-interactive"
